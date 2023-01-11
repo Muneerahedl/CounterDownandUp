@@ -30,10 +30,16 @@ struct ContentView: View {
             //.navigationTitle("العداد التنازلي")
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
+           
             .navigationBarItems(
-            leading: NavigationLink(destination: ContentView().navigationBarBackButtonHidden(true) , label:{  Image(systemName: "plus.circle.fill")}))
-            .accentColor(Color("Tcolor"))
-            
+            leading: NavigationLink(destination: newcounter().navigationBarBackButtonHidden(true) , label:{  Image(systemName: "plus.circle.fill")
+                    //.accessibilityElement()
+                    .accentColor(Color("Tcolor"))
+                    .accessibilityLabel(Text("Add new countdown"))
+                    .accessibilityHint(Text("Press here to add a new countdown"))
+                
+            }))
+          
            
         }
        
@@ -62,12 +68,17 @@ struct GridView : View {
                         Text (countdata.name)
                             .font (.title)
                             .fontWeight(.bold)
+                           
+                            
+                          
+                        
                         Text(countdata.date)
                         
                         Rectangle()
                             .frame(width: 160, height: 1)
                             .foregroundColor(.red.opacity(0))
-                        
+                            //.accessibilityValue(Text("countdowndate is "))
+                            
                     }
                     
                     ZStack{
@@ -86,6 +97,7 @@ struct GridView : View {
                             .font (.title2)
                             .fontWeight(.bold)
                             .foregroundColor(Color(countdata.backgroundcolor))
+                        
                         Text(dayslefttitle)
                     }
                     }
@@ -105,6 +117,7 @@ struct GridView : View {
                     } label: {
                         Label(deleteswipe, systemImage: "trash")
                     }.tint(.red)
+                        .accessibilityLabel(Text("Delete"))
                 }
                 .swipeActions(edge: .trailing) {
                     Button {
@@ -114,12 +127,13 @@ struct GridView : View {
                         Label(editeswipe, systemImage: "square.and.pencil")
                     }.tint(Color("Tcolor"))
                         .accessibility(label: Text("Add new countdown counter"))
+                        .accessibilityLabel(Text("Edit"))
                 }
                 
-                // .listRowSeparator(.hidden)
+               
             }
            
-       // .scrollContentBackground(.hidden)
+       
             
         
             }
@@ -141,7 +155,7 @@ struct Countdata : Identifiable {
 
 var countdown_Data = [
 //var fit_Data = [
-    Countdata(id: 0, name: "عودة صديقتي ", backgroundcolor: "Pinkcolor", date: "١٧ جون ٢٠٢٣", days:"300"),
+    Countdata(id: 0, name: "Friend's party", backgroundcolor: "Pinkcolor", date: "17 jun, 2023", days:"300"),
     Countdata(id: 1, name: "ميلاد مهند", backgroundcolor: "Bluecolor", date: "٣ مارس ٢٠٢٣", days:"20"),
     Countdata(id: 2, name: "السفر", backgroundcolor: "Greencolor", date: "٣ أغسطس ٢٠٢٣", days:"40"),
     Countdata(id: 3, name: "المغامرة", backgroundcolor: "Orangecolor", date: "٣ مارس ٢٠٢٣", days:"13"),
@@ -150,13 +164,13 @@ var countdown_Data = [
 ]
 
 
-var countup_Data = [
-    //var week_Fit_Data = [
-    Countdata(id: 0, name: "تجريبي ١", backgroundcolor: "Redcolor", date: "١ فبراير ٢٠٢١", days:"40"),
-    Countdata(id: 1, name: "تجريبي ٢", backgroundcolor: "Graycolor", date: "٣ أغسطس ٢٠٢٢", days:"97"),
-    Countdata(id: 2, name: "تجريبي ٣", backgroundcolor: "Orangecolor", date: "١٧ فبراير ٢٠٢٢", days:"120"),
-    Countdata(id: 3, name: "تجريبي ٤", backgroundcolor: "Purplecolor", date: "١ جولاي ٢٠٢٢", days:"35"),
-]
+//var countup_Data = [
+//    //var week_Fit_Data = [
+//    Countdata(id: 0, name: "تجريبي ١", backgroundcolor: "Redcolor", date: "١ فبراير ٢٠٢١", days:"40"),
+//    Countdata(id: 1, name: "تجريبي ٢", backgroundcolor: "Graycolor", date: "٣ أغسطس ٢٠٢٢", days:"97"),
+//    Countdata(id: 2, name: "تجريبي ٣", backgroundcolor: "Orangecolor", date: "١٧ فبراير ٢٠٢٢", days:"120"),
+//    Countdata(id: 3, name: "تجريبي ٤", backgroundcolor: "Purplecolor", date: "١ جولاي ٢٠٢٢", days:"35"),
+//]
 
 
 
